@@ -15,11 +15,11 @@ use \App\Http\Livewire\Auth\Register;
 |
 */
 
-Route::get('/register', Register::class);
+Route::get('/register', Register::class)->name('auth.register');
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 //Route::get('/dashboard', function () {
 //    return view('dashboard');

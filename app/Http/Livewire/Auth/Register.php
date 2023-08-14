@@ -14,11 +14,20 @@ class Register extends Component
 
     public function register()
     {
-        User::create([
-            'email'=> $this->email,
-            'name'=> $this->name,
-            'password'=> $this->password,
+        $data = $this->validate([
+            'name' => 'required|unique:users,name',
+            'email' => 'required|min:11|max:20|email|unique:users,email',
+            'password' => 'required|min:3|max:8|required_with:passwordConfirmation|same:passwordConfirmation',
+            'passwordConfirmation' => 'min:3|max:8',
         ]);
+
+        User::create([
+            'email'=> $data['email'],
+            'name'=> $data['name'],
+            'password'=> $data['password'],
+        ]);
+
+        return $this->redirectRoute('home');
     }
 
     public function render()
