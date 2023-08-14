@@ -8,8 +8,14 @@ use Livewire\Component;
 class SayHi extends Component
 {
     public $contact;
+
+    public $listeners = ['refreshChildren'=>'$refresh'];
+
     public function mount($contact){
         $this->contact = $contact;
+    }
+    public function refreshParent(){
+        $this->emit('refreshParent');
     }
 
 
