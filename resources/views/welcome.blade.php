@@ -11,8 +11,9 @@
 </head>
 <body>
     <h1>Hello world</h1>
-    <livewire:hello-world name="mount"/>
+    <livewire:hello-world />
 
+    Welcome:{{ now() }}
     @livewireScripts
 </body>
 </html>
