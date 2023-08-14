@@ -11,7 +11,7 @@
 </head>
 <body>
     <h1>Hello world</h1>
-    <livewire:hello-world />
+    <livewire:hello-world name="mount"/>
 
     @livewireScripts
 </body>
