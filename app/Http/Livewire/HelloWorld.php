@@ -12,7 +12,10 @@ class HelloWorld extends Component
     public $greatings = [];
 
 
-
+    public  function resetName($name)
+    {
+        $this->name = $name;
+    }
     public function render()
     {
         return view('livewire.hello-world');

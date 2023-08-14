@@ -17,7 +17,15 @@
         <option>Adios</option>
     </select>
 
+    <button wire:click="resetName('Emad')">Reset Name</button>
+    <button wire:click="resetName(event.target.innerText)">Reset Name Inner text</button>
+
+    <form action="#" wire:submit.prevent="$set('name', event.target.innerText)">
+        <button type="submit">Submit</button>
+    </form>
+
     Live wire Hello: {{ $name }} @if($loud) yes! @endif
     <p>{{ $greating }}</p>
     <p>{{ implode(', ', $greatings) }}</p>
+
 </div>
