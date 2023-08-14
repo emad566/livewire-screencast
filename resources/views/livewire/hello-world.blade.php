@@ -1,7 +1,23 @@
 <div>
-    Live wire Hello {{ $name }}: {{ $count }}
+    <input type="text" wire:model.debounce.1000ms="name">
+    <label>
+        loud
+        <input type="checkbox" wire:model="loud">
+    </label>
 
-    <button wire:click="inc">+</button>
-    <button wire:click="dec">-</button>
-    <button wire:click="zero">Zero</button>
+    <select wire:model="greating">
+        <option>Hello</option>
+        <option>Goodbye</option>
+        <option>Adios</option>
+    </select>
+
+    <select wire:model="greatings" multiple="multiple">
+        <option>Hello</option>
+        <option>Goodbye</option>
+        <option>Adios</option>
+    </select>
+
+    Live wire Hello: {{ $name }} @if($loud) yes! @endif
+    <p>{{ $greating }}</p>
+    <p>{{ implode(', ', $greatings) }}</p>
 </div>

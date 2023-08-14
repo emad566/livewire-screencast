@@ -6,24 +6,15 @@ use Livewire\Component;
 
 class HelloWorld extends Component
 {
-    public $count = 0;
+    public $name = 'Jelly';
+    public $loud = true;
+    public $greating = '';
+    public $greatings = [];
 
-    public function inc(){
-        $this->count++;
-    }
 
-    public function dec(){
-        $this->count--;
-    }
-
-    public function zero(){
-        $this->count--;
-    }
 
     public function render()
     {
-        return view('livewire.hello-world', [
-            'name'=> 'jelly',
-        ]);
+        return view('livewire.hello-world');
     }
 }
