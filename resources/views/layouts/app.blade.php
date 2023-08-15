@@ -1,15 +1,17 @@
 <!doctype html>
-<html lang="en" xmlns:livewire="http://www.w3.org/1999/html">
+<html class="h-full bg-white">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite('resources/css/app.css')
     <title>Dashboard</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    @vite('resources/css/app.css')
 
     <livewire:styles />
 </head>
-<body>
+<body class="h-full">
     {{ $slot }}
 
     <livewire:scripts />
