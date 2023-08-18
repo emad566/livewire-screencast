@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use \App\Http\Livewire\Auth\Register;
 use \App\Http\Livewire\Auth\Login;
+use \App\Http\Livewire\Dashboard\Home;
+use \App\Http\Livewire\Dashboard\Profile;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +17,20 @@ use \App\Http\Livewire\Auth\Login;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', Home::class)->name('dashboard.home');
+});
+Route::get('/dashboard/profile', Profile::class)->name('dashboard.profile');
 
-Route::get('/register', Register::class)->name('auth.register');
-Route::get('/login', Login::class)->name('auth.login');
+Route::middleware('guest')->group(function(){
+    Route::get('/register', Register::class)->name('register');
+    Route::get('/login', Login::class)->name('login');
+});
+
+
+
+
+
 
 Route::get('/', function () {
     return view('welcome');

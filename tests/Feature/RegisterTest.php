@@ -15,13 +15,13 @@ class RegisterTest extends TestCase
     /** @test */
     function registration_page_contains_livewire_component()
     {
-        $this->get('/register')->assertSeeLivewire('auth.register');
+        $this->get('/register')->assertSeeLivewire('register');
     }
 
     /** @test */
     function can_register()
     {
-        Livewire::test('auth.register')
+        Livewire::test('register')
             ->set('name', 'emade09@gmail.com')
             ->set('email', 'emade09@gmail.com')
             ->set('password', '123456')
@@ -38,7 +38,7 @@ class RegisterTest extends TestCase
     /** @test */
     function email_is_required()
     {
-        Livewire::test('auth.register')
+        Livewire::test('register')
             ->set('email', '')
             ->set('name', 'ffer')
             ->set('password', '123456')
@@ -50,7 +50,7 @@ class RegisterTest extends TestCase
     /** @test */
     function email_is_valid_email()
     {
-        Livewire::test('auth.register')
+        Livewire::test('register')
             ->set('email', 'emade09')
             ->set('name', 'emade09')
             ->set('password', '123456')
@@ -69,7 +69,7 @@ class RegisterTest extends TestCase
             'password' => 'password',
         ]);
 
-        Livewire::test('auth.register')
+        Livewire::test('register')
             ->set('email', 'email2@gmail.com')
             ->set('name', 'email2@gmail.com')
             ->set('password', '123456')
@@ -88,7 +88,7 @@ class RegisterTest extends TestCase
             'password' => 'password',
         ]);
 
-        Livewire::test('auth.register')
+        Livewire::test('register')
             ->set('email', 'email4@gmail.com')
             ->assertHasNoErrors()
             ->set('email', 'email3@gmail.com')
@@ -98,7 +98,7 @@ class RegisterTest extends TestCase
     /** @test */
     function password_is_required()
     {
-        Livewire::test('auth.register')
+        Livewire::test('register')
             ->set('email', 'emade09@gmail.com')
             ->set('name', 'emade09@gmail.com')
             ->set('password', '')
@@ -110,7 +110,7 @@ class RegisterTest extends TestCase
     /** @test */
     function password_is_minimum_of_characters()
     {
-        Livewire::test('auth.register')
+        Livewire::test('register')
             ->set('email', 'emade09@gmail.com')
             ->set('name', 'emade09@gmail.com')
             ->set('password', 'se')
@@ -122,7 +122,7 @@ class RegisterTest extends TestCase
     /** @test */
     function password_matches_password_confirmation()
     {
-        Livewire::test('auth.register')
+        Livewire::test('register')
             ->set('email', 'emade09@gmail.com')
             ->set('name', 'emade09@gmail.com')
             ->set('password', 'secret')
