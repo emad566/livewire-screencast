@@ -17,6 +17,7 @@ class ProfileTest extends TestCase
             'email' => 'email2@gmail.com',
             'email_verified_at' => now(),
             'name' => 'email2@gmail.com',
+            'about' => 'about',
             'password' => 'password',
         ]);
 
@@ -31,20 +32,21 @@ class ProfileTest extends TestCase
         $user = User::create([
             'email' => 'email1@gmail.com',
             'email_verified_at' => now(),
-            'name' => 'email1@gmail.com',
+            'name' => 'email1@gmail.com',   
+            'about' => 'about',   
             'password' => 'password',
         ]);
 
         Livewire::actingAs($user)
             ->test('dashboard.profile')
             ->set('name', 'newname')
-            ->set('email', 'newemail@mail.com')
+            ->set('about', str_repeat('newabout', 5))
             ->call('save');
 
         $user->refresh();
         
         $this->assertEquals('newname', $user->name);
-        $this->assertEquals('newemail@mail.com', $user->email);
+        $this->assertEquals(str_repeat('newabout', 5), $user->about);
     }
     
     /** @test */
@@ -53,14 +55,15 @@ class ProfileTest extends TestCase
             'email' => 'email4@gmail.com',
             'email_verified_at' => now(),
             'name' => 'email4@gmail.com',
+            'about' => 'about',
             'password' => 'password',
         ]);
 
         Livewire::actingAs($user)
             ->test('dashboard.profile')
             ->set('name', str_repeat('a', 20))
-            ->set('email', 'newemail@mail.com')
+            ->set('about', str_repeat('newabout', 5))
             ->call('save')
-            ->assertHasErrors(['username'=> 'max']);
+            ->assertHasErrors(['name'=> 'max']);
     }
 }

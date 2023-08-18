@@ -7,18 +7,18 @@ use Livewire\Component;
 class Profile extends Component
 {
     public $name;
-    public $email;
+    public $about;
 
     public function save()
     {
         $data = $this->validate([
-            'name' => 'required|unique:users,name,id'. auth()->user()->id,
-            'email' => 'required|min:11|max:20|email|unique:users,email,id'. auth()->user()->id,
+            'name' => 'required|max:24',
+            'about' => 'required|min:24|max:100',
         ]);
 
         auth()->user()->update([
             'name'=>$this->name,
-            'email'=>$this->email,
+            'about'=>$this->about,
         ]);
     }
 

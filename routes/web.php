@@ -19,8 +19,8 @@ use \App\Http\Livewire\Dashboard\Profile;
 */
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', Home::class)->name('dashboard.home');
+    Route::get('/dashboard/profile', Profile::class)->name('dashboard.profile');
 });
-Route::get('/dashboard/profile', Profile::class)->name('dashboard.profile');
 
 Route::middleware('guest')->group(function(){
     Route::get('/register', Register::class)->name('register');
