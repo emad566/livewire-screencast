@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class Profile extends Component
 {
+    protected $listeners = ['notify-saved'=>'$refresh'];
     public $name;
     public $about;
     public $saved;
@@ -27,8 +28,7 @@ class Profile extends Component
             'name'=>$this->name,
             'about'=>$this->about,
         ]);
-        // $this->emitSelf('notify-saved');    
-        $this->dispatchBrowserEvent('notify');
+        $this->emitSelf('notify-saved');
     }
 
     public function render()
