@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use \App\Http\Livewire\Auth\Register;
+use \App\Http\Livewire\Auth\Login;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,7 @@ use \App\Http\Livewire\Auth\Register;
 */
 
 Route::get('/register', Register::class)->name('auth.register');
+Route::get('/login', Login::class)->name('auth.login');
 
 Route::get('/', function () {
     return view('welcome');

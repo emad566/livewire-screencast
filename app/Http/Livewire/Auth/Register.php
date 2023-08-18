@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Register extends Component
@@ -11,6 +12,13 @@ class Register extends Component
     public $email;
     public $password;
     public $passwordConfirmation;
+
+    public function updatedEmail()
+    {
+        $data = $this->validate([
+            'email' => 'required|min:11|max:20|email|unique:users,email',
+        ]);
+    }
 
     public function register()
     {
@@ -21,13 +29,15 @@ class Register extends Component
             'passwordConfirmation' => 'min:3|max:8',
         ]);
 
-        User::create([
+        $user = User::create([
             'email'=> $data['email'],
             'name'=> $data['name'],
             'password'=> $data['password'],
         ]);
 
-        return $this->redirectRoute('home');
+        auth()->login($user);
+        return redirect('/');
+//        return $this->redirectRoute('home');
     }
 
     public function render()
