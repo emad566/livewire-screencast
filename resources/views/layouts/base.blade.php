@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
     @vite('resources/css/app.css')
+    <script defer src="{{ asset('js/alpine.min.js') }}"></script>
 
     <livewire:styles />
 </head>
 <body class="h-full">
     @yield('content')
-    {{ $slot }}
 
     <livewire:scripts />
+
 </body>
 </html>

@@ -61,9 +61,25 @@ class ProfileTest extends TestCase
 
         Livewire::actingAs($user)
             ->test('dashboard.profile')
-            ->set('name', str_repeat('a', 20))
+            ->set('name', str_repeat('a', 26))
             ->set('about', str_repeat('newabout', 5))
             ->call('save')
             ->assertHasErrors(['name'=> 'max']);
+    }
+
+    function message_is_shown_save(){
+        $user = User::create([
+            'email' => 'email43@gmail.com',
+            'email_verified_at' => now(),
+            'name' => 'email43@gmail.com',
+            'about' => 'about',
+            'password' => 'password',
+        ]);
+
+        Livewire::actingAs($user)
+            ->test('profile')
+            ->call('save')
+            ->assertDispatchedBrowserEvent('notify');
+            // ->assertEmitted('notify-saved');
     }
 }

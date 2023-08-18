@@ -8,6 +8,13 @@ class Profile extends Component
 {
     public $name;
     public $about;
+    public $saved;
+
+    function mount()  {
+        $user = auth()->user();
+        $this->name = $user->name; 
+        $this->about = $user->about; 
+    }
 
     public function save()
     {
@@ -20,6 +27,8 @@ class Profile extends Component
             'name'=>$this->name,
             'about'=>$this->about,
         ]);
+        // $this->emitSelf('notify-saved');    
+        $this->dispatchBrowserEvent('notify');
     }
 
     public function render()
