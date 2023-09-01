@@ -7,7 +7,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-    @vite('resources/css/app.css')
+    
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
 
@@ -22,6 +22,5 @@
     @yield('content')
 
     <livewire:scripts />
-
 </body>
 </html>
