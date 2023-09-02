@@ -19,6 +19,7 @@ class Login extends Component
             auth()->login($user);
             return redirect()->route('dashboard.home');
         }
+        $this->addError('email', 'Erorr data :'.$this->password);
     }
 
     public function render()

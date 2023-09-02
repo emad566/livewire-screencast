@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'emade09@gmail.com',
             'email_verified_at' => now(),
             'name' => 'emade09',
-            'password' => '123123',
+            'password' => '12341234',
         ]);
     }
 }

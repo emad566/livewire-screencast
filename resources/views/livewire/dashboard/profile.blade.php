@@ -8,25 +8,25 @@
             </x-input.group>
 
             <x-input.group label="Birthday" for="birthday" :error="$errors->first('birthday')">
-                <x-input.date wire:model="birthday" id="birthday" placeholder="MM/DD/YYYY" />
+                <x-input.date wire:model="birthday" id="birthday" :initial-value="$birthday"  placeholder="MM/DD/YYYY" />
             </x-input.group>
-
             <x-input.group label="About" for="about" :error="$errors->first('about')" help-text="Write a few sentances about yourself.">
                 <x-input.rich-text wire:model.lazy="about" id="about" :initial-value="$about" />
             </x-input.group>
 
             <x-input.group label="Photo" for="photo">
                 <div class="flex items-center">
-                    <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                    <span  class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                         <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg> 
+                        </svg>
+
                     </span>
+                    <img id="avatarImg" src="{{ asset($newAvatar? $newAvatar->temporaryUrl(): $imgSrc) }}" style="padding: 5px; border: solid 2px #f90; width: 50px; border-radius: 50%;" />
 
                     <span class="ml-5 rounded-md shadow-sm">
-                        <button type="button" class="py-2 px-3 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
-                            Change
-                        </button>
+                        <input id="avatarFile" type="file" wire:model="newAvatar" style="display: none">
+                        @error('newAvatar') {{ $message }} @enderror
                     </span>
                 </div>
             </x-input.group>
@@ -56,3 +56,15 @@
         </div>
     </form>
 </div>
+
+
+<script !src="">
+    var avatarImg = document.getElementById('avatarImg');
+    var avatarFile = document.getElementById('avatarFile');
+    avatarFile.onchange = function (event){
+        avatarImg.src = URL.createObjectURL(event.target.files[0]);
+    }
+    avatarImg.onclick = function (){
+        avatarFile.click();
+    }
+</script>
